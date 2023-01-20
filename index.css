@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+html, body {
+    width: 700px;
+    height: 100%;
+}
+
+#head {
+    height: 5vh;
+    width: 100%;
+    padding-left: 100px;
+}
+
+#cover-photo {
+    width: 740px;
+    height: 100%;
+    z-index: 0;
+}
+
+#round-photo {
+    position:absolute;
+    top: 185px;
+    left: 15px;
+    width: 22%;
+    height: 15vh;
+    border-radius: 100%;
+    border: 3px solid white;
+    z-index: 3;
+}
+
+#follow:hover{
+    cursor: pointer;
+    background-color: lightblue;
+    opacity: .5;
+}
+
+#follow {
+    display: flex;
+    margin: 10px 0 15px 550px;
+    color: white;
+    background-color: blue;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+#profile {
+    height: 20vh;
+    width: 100%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#tweets{
+    display: flex;
+}
+
+p {
+    color: gray;
+}
+
+.space p {
+    margin: 15px 0 15px;
+}
+
+.tabs {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding-top: 8px;
+}
+
+.tweet-area {
+    width: 100%;
+    display: flex-column;
+
+
+}
+
+#border {
+    display: flex-column;
+    border-bottom: solid 1px grey;
+}
+
+#tweets {
+    height: 40vh;
+    width: 100%;
+    padding-left: 40px;
+    display: flex;
+    background-color: yellow;
+    border-top: 1px solid grey;
+}
