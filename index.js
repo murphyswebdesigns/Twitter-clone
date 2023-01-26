@@ -4,8 +4,8 @@ var user1 = {
     joinedDate: 'June 2009',
     followingCount: 103,
     followerCount: 47900000,
-    avatarURL: 'assets/elonmusk.jpg',
-    coverPhotoURL: 'assets/elonmusk-cover.jpeg',
+    avatarURL: 'https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_400x400.jpg',
+    coverPhotoURL: 'https://pbs.twimg.com/profile_banners/44196397/1576183471/1500x500',
     tweets: [
         {
             text: 'I admit to judging books by their cover',
@@ -28,8 +28,8 @@ var user2 = {
     joinedDate: 'June 2009',
     followingCount: 274,
     followerCount: 53800000,
-    avatarURL: 'assets/billgates.jpg',
-    coverPhotoURL: 'assets/billgates-cover.jpeg',
+    avatarURL: 'https://pbs.twimg.com/profile_images/1564398871996174336/M-hffw5a_400x400.jpg',
+    coverPhotoURL: 'https://pbs.twimg.com/profile_banners/50393960/1672784571/1500x500',
     tweets: [
         {
             text: 'Everybody asks, how is the next Windows coming along? But nobody asks how is Bill? :/',
@@ -46,21 +46,30 @@ var user2 = {
     ]
 };
 
+const users = {user1, user2};
+
+const searchParams = new URLSearchParams(window.location.search);
+console.log(users[searchParams.get('user')]);
+const selectedUser = users[searchParams.get('user')];
+
 
 var head = document.createElement('div');
 head.id = 'head';
 document.body.appendChild(head);
 head.innerHTML = `
-<h3>${user1.displayName}</h3>
+<div class = 'head-arrow'>⇤</div>
+<div class="head">
+<h3>${selectedUser.displayName}☑</h3>
 <p>13.6k tweets</p>
+</div>
 `
 
 var coverPhoto = document.createElement('div');
-coverPhoto.id = 'coverPhoto';
+coverPhoto.id = 'coverPhotoContainer';
 document.body.appendChild(coverPhoto);
 coverPhoto.innerHTML = `
-<img id='cover-photo' src='/Users/rickysprafkin/Downloads/your-turn-dynamic-twitter/assets/elonmusk-cover.jpeg'>
-<img id='round-photo' src='/Users/rickysprafkin/Downloads/your-turn-dynamic-twitter/assets/elonmusk.jpg'>
+<img id='cover-photo' src='${selectedUser.coverPhotoURL}'>
+<img id='round-photo' src='${selectedUser.avatarURL}'>
 <button id='follow'> Following</button>
 `
 
@@ -68,11 +77,11 @@ var profile = document.createElement('div');
 profile.id = 'profile';
 document.body.appendChild(profile);
 profile.innerHTML = `
-<h3>${user1.displayName}</h3>
-<p>${user1.userName}</p>
+<h3>${selectedUser.displayName}☑</h3>
+<p>${selectedUser.userName}</p>
 <div class='space'>
-<p>Joined ${user1.joinedDate}</p>
-<p>${user1.followingCount} Following ${user1.followerCount} Followers</p>
+<p>Joined ${selectedUser.joinedDate}</p>
+<p><strong>${selectedUser.followingCount}</strong> Following <strong>${selectedUser.followerCount}</strong> Followers</p>
 </div>
 <div class='tabs'>
 <h4>Tweets</h4>
@@ -86,11 +95,25 @@ profile.innerHTML = `
 var tweets = document.createElement('div');
 tweets.id = 'tweets';
 document.body.appendChild(tweets);
-tweets.innerHTML = `
-<div class='tweet-area'>
-    <h4>${user1.displayName} </h4> 
-    <p> ${user1.userName}</p> <br>
-    <p id = 'border'> ${user1.tweets}</p>
-    
-</div>
+selectedUser.tweets.forEach((tweet) => {
+    tweets.innerHTML += `
+    <div id = 'tweetContainer'>
+        <div class='tweet-area'>
+            <img id = 'tweet-photo' src='${selectedUser.avatarURL}'>
+            <h4>${selectedUser.displayName}☑</h4><br>
+            <p> ${selectedUser.userName}· </p> 
+        <div id = 'tweet-content'>
+            <p> ${tweet.timestamp}</p>
+            <p> ${tweet.text}</p>
+        </div>
+        </div>
+        <div id = 'bottom-tweet-area'>
+            <p>💬</p>
+            <p>🔁</p>
+            <p>♡</p>
+            <p>↥</p>
+        </div>
+        
+    </div>
 `
+});

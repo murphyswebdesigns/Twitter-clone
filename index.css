@@ -6,25 +6,37 @@
 
 html, body {
     width: 700px;
+    margin: 0 auto;
     height: 100%;
+    border: solid 1px lightgray;
+    border-bottom: none;
 }
 
 #head {
     height: 5vh;
     width: 100%;
-    padding-left: 100px;
+    display: flex;
+}
+
+.head-arrow {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.head {
+    padding-left: 30px;
 }
 
 #cover-photo {
-    width: 740px;
+    width: 100%;
     height: 100%;
     z-index: 0;
 }
 
 #round-photo {
-    position:absolute;
-    top: 185px;
-    left: 15px;
+    margin-top: -80px;
+    margin-left: 20px;
     width: 22%;
     height: 15vh;
     border-radius: 100%;
@@ -40,7 +52,7 @@ html, body {
 
 #follow {
     display: flex;
-    margin: 10px 0 15px 550px;
+    margin: -40px 0 15px 585px;
     color: white;
     background-color: blue;
     padding: 10px 20px;
@@ -55,15 +67,16 @@ html, body {
     flex-direction: column;
 }
 
-#tweets{
-    display: flex;
+strong {
+    color: black;
 }
+
 
 p {
     color: gray;
 }
 
-.space p {
+.space > p {
     margin: 15px 0 15px;
 }
 
@@ -76,21 +89,31 @@ p {
 
 .tweet-area {
     width: 100%;
-    display: flex-column;
-
-
+    display: flex;
+    padding-top: 10px;
+    box-sizing: border-box;
+    
 }
 
-#border {
-    display: flex-column;
-    border-bottom: solid 1px grey;
+#tweet-photo {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+
+#bottom-tweet-area {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: solid 1px lightgrey;
 }
 
 #tweets {
     height: 40vh;
     width: 100%;
-    padding-left: 40px;
-    display: flex;
-    background-color: yellow;
-    border-top: 1px solid grey;
+    border-top: 1px solid lightgrey;
+    
 }
+
+
